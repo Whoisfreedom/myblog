@@ -1,0 +1,13 @@
+<%-include header%>
+    <form method="POST" role="form" id="login">
+    	<legend>请登录</legend>    
+    	<div class="form-group">
+    		<label for="port">账号</label>
+    		<input type="text" name="port" class="form-control" id="port" placeholder="请输入账号">
+    		<label for="password">密码</label>
+    		<input type="password" name="password" class="form-control" id="password" placeholder="请输入密码">
+    	</div>   	
+    	<button type="submit"  class="btn btn-primary">登录</button>
+      <button type="button" class="btn btn-default">注册</button>
+    </form>
+    <%- include footer%>
