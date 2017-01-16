@@ -114,9 +114,5 @@ router.post('/newLogin', function(req, res, next) {
 	
 	
 });
-router.post('/artInput', function(req, res, next) {
-	console.log(req.body.artTitle);
-	console.log(req.body.artBody);
-});
 
 module.exports = router;

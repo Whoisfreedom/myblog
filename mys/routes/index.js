@@ -117,14 +117,4 @@ router.get('/article', function(req, res, next) {
   }
 })
 });
-router.get('/write', function(req, res, next) {
-  //初始化session
-  res.render(
-    'write', 
-    { 
-      title: '写我的博客' ,
-      user:req.session.username,
-    }
-  );
-});
 module.exports = router;
