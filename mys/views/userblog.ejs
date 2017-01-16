@@ -1,0 +1,10 @@
+<%-include header%>
+<ul class="list-group">
+<% for(var i = 0;i<blog1.length;i++){ %>
+<li class="list-group-item">
+	<a class="list-group-item" href="/article?id=<%=art[i]%>">
+	<%= blog1[i] %></a>
+</li> 
+<% } %>
+</ul>
+<%- include footer%>

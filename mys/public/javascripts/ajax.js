@@ -58,3 +58,24 @@ $("#registered").submit(function(event) {
     });
   }
 });
+
+$("#articleup").submit(function(event) {
+  /* Act on the event */
+  $.ajax({
+    url: '/users/artInput',
+    type: 'POST',
+    dataType: 'json',
+    data: $(this).serialize(),
+  })
+  .done(function() {
+    console.log("success");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+  
+});

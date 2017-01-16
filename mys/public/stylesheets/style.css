@@ -20,3 +20,10 @@ footer{
 .my-table thead h3{
 	text-align: center;
 }
+.artTitle{
+	text-align: center;
+}
+.artBody{
+	text-align: center;
+	text-indent:2em;
+}
