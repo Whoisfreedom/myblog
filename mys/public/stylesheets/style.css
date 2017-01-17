@@ -27,3 +27,13 @@ footer{
 	text-align: center;
 	text-indent:2em;
 }
+.pageChange{
+	text-align: center;
+	clear:both;
+}
+.pageChange li{
+	display:inline-block;
+	list-style: none;
+/*	margin-left: 10px;
+	margin-right: 10px;*/
+}

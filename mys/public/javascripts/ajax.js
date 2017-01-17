@@ -58,22 +58,28 @@ $("#registered").submit(function(event) {
     });
   }
 });
-$(#artUp).submit(function(event){
-    console.log(this.serialize());
-    $.ajax({
-      url: '/path/to/file',
-      type: 'default GET (Other values: POST)',
-      dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-      data: {param1: 'value1'},
-    })
-    .done(function() {
-      console.log("success");
-    })
-    .fail(function() {
-      console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
-    });
-    
-})
+
+$("#articleup").submit(function(event) {
+  event.preventDefault();
+  /* Act on the event */
+  $.ajax({
+    url: '/users/artInput',
+    type: 'POST',
+    dataType: 'json',
+    data: $(this).serialize(),
+  })
+  .done(function(data) {
+    if(data.result){
+      alert("文章发表成功");
+      location.href = '/writeSucceed';
+    }
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+  
+});

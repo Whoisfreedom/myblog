@@ -1,10 +1,38 @@
 <%-include header%>
+ <% if (blog1.length) { %>
 <ul class="list-group">
 <% for(var i = 0;i<blog1.length;i++){ %>
 <li class="list-group-item">
-	<a class="list-group-item" href="/article?id=<%=art[i]%>">
-	<%= blog1[i] %></a>
+<a class="list-group-item" href="/article?id=<%=art[i]%>">
+<%= blog1[i] %></a>
 </li> 
 <% } %>
+</ul>
+<% } else { %>
+<div class="alert alert-info"><a href="/write">您还没有写过文章，赶紧去写文章吧。</a></div>
+<% } %>
+<ul class=pageChange>
+<%if(page-1){%>
+	<li><a href="/userblog?page=<%=page-1%>">上一页</a></li>
+<%}else{%>
+	<li><span>上一页</span></li>
+<%}%>
+<% for(var i = 1;i<=maxPage;i++){ %>
+<% if(i==page){%>
+<li>
+<span><%=page%></span>
+</li> 
+<%}else{%>
+<li>
+<a href="/userblog?page=<%=i%>">
+<%=i%></a>
+</li> 
+<%}%>
+<% } %>
+<%if(maxPage-page){%>
+	<li><a href="/userblog?page=<%=(page+1)%>">下一页</a></li>
+<%}else{%>
+	<li><span>下一页</span></li>
+<%}%>
 </ul>
 <%- include footer%>

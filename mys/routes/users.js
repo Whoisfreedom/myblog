@@ -10,7 +10,7 @@ var query = require('mysql1');
 // 	});
 // 	connection.connect();
 /* GET users listing. */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
 	// connection.connect();
 	// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
 	//   if (err) console.log(err);
@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
 	// });
 	
 });
-router.post('/login', function(req, res, next) {
+router.post('/login', function(req, res) {
 
 	console.log(req.body.port);
 	console.log(req.body.password);
@@ -65,7 +65,7 @@ router.post('/login', function(req, res, next) {
 	  // connection.end();
 	});
 });
-router.post('/newLogin', function(req, res, next) {
+router.post('/newLogin', function(req, res) {
 	console.log(1111);
 	console.log(req.body.registeredName);
 	console.log(req.body.registeredPassword);
@@ -93,10 +93,12 @@ router.post('/newLogin', function(req, res, next) {
 			  throw err;
 			 }
 			 if (rows){
+			 	//注册没有添加ID回来改.
 			 	// res.send({result:false});
 			 	console.log("用户名创建成功");
-			 	// console.log(rows);
-			 	req.session.username=_port ;
+			 	console.log(rows.insertId);
+			 	req.session.myid = rows.insertId;
+			 	req.session.username=_port;
 				req.session.password=_password;
 			 // 	req.session.username=_port ;
 				// req.session.password=_password;
@@ -113,6 +115,19 @@ router.post('/newLogin', function(req, res, next) {
 	});
 	
 	
+});
+router.post('/artInput', function(req, res) {
+	var artTitle = req.body.artTitle;
+	var artBody = req.body.artBody;
+	query("INSERT INTO myarticle(authorid,title,article) values('"+ req.session.myid +"','"+ artTitle +"','"+ artBody +"')", function selectTable(err, rows, fields){
+		if(err){
+			throw err;
+		}
+		if(rows){
+			console.log("文章写入成功")
+			res.send({result:true});
+		}
+	});
 });
 
 module.exports = router;
